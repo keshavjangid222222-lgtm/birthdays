@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Vanshii ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial;
+  background: black;
+  color: white;
+}
+
+/* full screen container */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* slideshow image */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.active {
+  opacity: 1;
+}
+
+/* text animation */
+.text {
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  animation: fadeText 2s;
+}
+
+@keyframes fadeText {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* play button */
+button {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- 🔥 CHANGE HERE: Photos -->
+  <img class="slide active" src="photo1.jpg">
+  <img class="slide" src="photo2.jpg">
+  <img class="slide" src="photo3.jpg">
+
+  <!-- 🔥 Animated text -->
+  <div class="text" id="text">Happy Birthday Vanshii ❤️</div>
+
+  <!-- 🎶 Music -->
+  <audio id="music">
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <button onclick="start()">Play 🎶</button>
+
+</div>
+
+<script>
+
+let slides = document.querySelectorAll(".slide");
+let text = document.getElementById("text");
+
+let messages = [
+  "Happy Birthday Vanshii ❤️",
+  "You are my everything 💖",
+  "I love you forever ♾️"
+];
+
+let i = 0;
+
+function start() {
+  document.getElementById("music").play();
+  runSlider();
+}
+
+function runSlider() {
+  setInterval(() => {
+
+    slides.forEach(s => s.classList.remove("active"));
+    slides[i % slides.length].classList.add("active");
+
+    text.innerText = messages[i % messages.length];
+
+    i++;
+
+  }, 3000); // 🔥 CHANGE speed here
+
+}
+
+</script>
+
+</body>
+</html>
